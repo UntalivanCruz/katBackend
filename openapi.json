@@ -1,0 +1,2774 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "kat-backend",
+    "version": "0.0.1",
+    "description": "Kat Powerwashing Invoice",
+    "contact": {
+      "name": "Ivan Cruz",
+      "email": "ivancruzhn@gmail.com"
+    }
+  },
+  "paths": {
+    "/invoice-details/count": {
+      "get": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "count",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "InvoiceDetail model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceDetailController.count"
+      }
+    },
+    "/invoice-details/{id}/invoice": {
+      "get": {
+        "x-controller-name": "InvoiceDetailInvoiceController",
+        "x-operation-name": "getInvoice",
+        "tags": [
+          "InvoiceDetailInvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice belonging to InvoiceDetail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Invoice"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InvoiceDetailInvoiceController.getInvoice"
+      }
+    },
+    "/invoice-details/{id}/item": {
+      "get": {
+        "x-controller-name": "InvoiceDetailItemController",
+        "x-operation-name": "getItem",
+        "tags": [
+          "InvoiceDetailItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item belonging to InvoiceDetail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InvoiceDetailItemController.getItem"
+      }
+    },
+    "/invoice-details/{id}": {
+      "put": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "InvoiceDetail PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDetail"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceDetailController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "InvoiceDetail PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDetailPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceDetailController.updateById"
+      },
+      "get": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "findById",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "InvoiceDetail model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetailWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetail.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceDetailController.findById"
+      },
+      "delete": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "InvoiceDetail DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InvoiceDetailController.deleteById"
+      }
+    },
+    "/invoice-details": {
+      "post": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "create",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "InvoiceDetail model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetail"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInvoiceDetail"
+              }
+            }
+          }
+        },
+        "operationId": "InvoiceDetailController.create"
+      },
+      "patch": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "InvoiceDetail PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDetailPartial"
+              }
+            }
+          }
+        },
+        "operationId": "InvoiceDetailController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "InvoiceDetailController",
+        "x-operation-name": "find",
+        "tags": [
+          "InvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of InvoiceDetail model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvoiceDetailWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetail.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceDetailController.find"
+      }
+    },
+    "/invoices/count": {
+      "get": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "count",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Invoice.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Invoice>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceController.count"
+      }
+    },
+    "/invoices/{id}/invoice-details": {
+      "post": {
+        "x-controller-name": "InvoiceInvoiceDetailController",
+        "x-operation-name": "create",
+        "tags": [
+          "InvoiceInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInvoiceDetailInInvoice"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceInvoiceDetailController.create"
+      },
+      "patch": {
+        "x-controller-name": "InvoiceInvoiceDetailController",
+        "x-operation-name": "patch",
+        "tags": [
+          "InvoiceInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice.InvoiceDetail PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDetailPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceInvoiceDetailController.patch"
+      },
+      "get": {
+        "x-controller-name": "InvoiceInvoiceDetailController",
+        "x-operation-name": "find",
+        "tags": [
+          "InvoiceInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Invoice has many InvoiceDetail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvoiceDetail"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceInvoiceDetailController.find"
+      },
+      "delete": {
+        "x-controller-name": "InvoiceInvoiceDetailController",
+        "x-operation-name": "delete",
+        "tags": [
+          "InvoiceInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice.InvoiceDetail DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceInvoiceDetailController.delete"
+      }
+    },
+    "/invoices/{id}": {
+      "put": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invoice PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Invoice"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invoice PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoicePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InvoiceController.updateById"
+      },
+      "get": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "findById",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceController.findById"
+      },
+      "delete": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invoice DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InvoiceController.deleteById"
+      }
+    },
+    "/invoices": {
+      "post": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "create",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInvoice"
+              }
+            }
+          }
+        },
+        "operationId": "InvoiceController.create"
+      },
+      "patch": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Invoice.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Invoice>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoicePartial"
+              }
+            }
+          }
+        },
+        "operationId": "InvoiceController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "InvoiceController",
+        "x-operation-name": "find",
+        "tags": [
+          "InvoiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Invoice model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvoiceWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InvoiceController.find"
+      }
+    },
+    "/items/count": {
+      "get": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "count",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Item.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Item>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ItemController.count"
+      }
+    },
+    "/items/{id}/invoice-details": {
+      "post": {
+        "x-controller-name": "ItemInvoiceDetailController",
+        "x-operation-name": "create",
+        "tags": [
+          "ItemInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInvoiceDetailInItem"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ItemInvoiceDetailController.create"
+      },
+      "patch": {
+        "x-controller-name": "ItemInvoiceDetailController",
+        "x-operation-name": "patch",
+        "tags": [
+          "ItemInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item.InvoiceDetail PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDetailPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ItemInvoiceDetailController.patch"
+      },
+      "get": {
+        "x-controller-name": "ItemInvoiceDetailController",
+        "x-operation-name": "find",
+        "tags": [
+          "ItemInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Item has many InvoiceDetail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvoiceDetail"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ItemInvoiceDetailController.find"
+      },
+      "delete": {
+        "x-controller-name": "ItemInvoiceDetailController",
+        "x-operation-name": "delete",
+        "tags": [
+          "ItemInvoiceDetailController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item.InvoiceDetail DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "InvoiceDetail.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<InvoiceDetail>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ItemInvoiceDetailController.delete"
+      }
+    },
+    "/items/{id}": {
+      "put": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Item PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ItemController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Item PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ItemController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ItemController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Item DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ItemController.deleteById"
+      }
+    },
+    "/items": {
+      "post": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "create",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewItem"
+              }
+            }
+          }
+        },
+        "operationId": "ItemController.create"
+      },
+      "patch": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Item PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Item.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Item>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemPartial"
+              }
+            }
+          }
+        },
+        "operationId": "ItemController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ItemController",
+        "x-operation-name": "find",
+        "tags": [
+          "ItemController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Item model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ItemController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/signup": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "signUp",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            }
+          }
+        },
+        "operationId": "UserController.signUp"
+      }
+    },
+    "/users/login": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "login",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8
+                  }
+                }
+              }
+            }
+          },
+          "description": "The input of login function",
+          "required": true
+        },
+        "operationId": "UserController.login"
+      }
+    },
+    "/whoAmI": {
+      "get": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "whoAmI",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UserController.whoAmI"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Invoice": {
+        "title": "Invoice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "correlative": {
+            "type": "number"
+          },
+          "scheduled": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "special": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "correlative",
+          "scheduled",
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "Item": {
+        "title": "Item",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "InvoiceDetail": {
+        "title": "InvoiceDetail",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewInvoiceDetail": {
+        "title": "NewInvoiceDetail",
+        "type": "object",
+        "description": "(tsType: Omit<InvoiceDetail, 'id'>, schemaOptions: { title: 'NewInvoiceDetail', exclude: [ 'id' ] })",
+        "properties": {
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<InvoiceDetail, 'id'>"
+      },
+      "InvoiceWithRelations": {
+        "title": "InvoiceWithRelations",
+        "type": "object",
+        "description": "(tsType: InvoiceWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "correlative": {
+            "type": "number"
+          },
+          "scheduled": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "special": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "invoiceDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceDetailWithRelations"
+            }
+          }
+        },
+        "required": [
+          "correlative",
+          "scheduled",
+          "name"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "InvoiceWithRelations"
+      },
+      "ItemWithRelations": {
+        "title": "ItemWithRelations",
+        "type": "object",
+        "description": "(tsType: ItemWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "invoiceDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceDetailWithRelations"
+            }
+          }
+        },
+        "required": [
+          "description"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ItemWithRelations"
+      },
+      "InvoiceDetailWithRelations": {
+        "title": "InvoiceDetailWithRelations",
+        "type": "object",
+        "description": "(tsType: InvoiceDetailWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          },
+          "invoice": {
+            "$ref": "#/components/schemas/InvoiceWithRelations"
+          },
+          "item": {
+            "$ref": "#/components/schemas/ItemWithRelations"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "InvoiceDetailWithRelations"
+      },
+      "InvoiceDetailPartial": {
+        "title": "InvoiceDetailPartial",
+        "type": "object",
+        "description": "(tsType: Partial<InvoiceDetail>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<InvoiceDetail>"
+      },
+      "NewInvoiceDetailInInvoice": {
+        "title": "NewInvoiceDetailInInvoice",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<InvoiceDetail, 'id'>, 'invoiceId'>, schemaOptions: { title: 'NewInvoiceDetailInInvoice', exclude: [ 'id' ], optional: [ 'invoiceId' ] })",
+        "properties": {
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<InvoiceDetail, 'id'>, 'invoiceId'>"
+      },
+      "NewInvoice": {
+        "title": "NewInvoice",
+        "type": "object",
+        "description": "(tsType: Omit<Invoice, 'id'>, schemaOptions: { title: 'NewInvoice', exclude: [ 'id' ] })",
+        "properties": {
+          "correlative": {
+            "type": "number"
+          },
+          "scheduled": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "special": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "correlative",
+          "scheduled",
+          "name"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Invoice, 'id'>"
+      },
+      "InvoicePartial": {
+        "title": "InvoicePartial",
+        "type": "object",
+        "description": "(tsType: Partial<Invoice>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "correlative": {
+            "type": "number"
+          },
+          "scheduled": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "special": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Invoice>"
+      },
+      "NewInvoiceDetailInItem": {
+        "title": "NewInvoiceDetailInItem",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<InvoiceDetail, 'id'>, 'itemId'>, schemaOptions: { title: 'NewInvoiceDetailInItem', exclude: [ 'id' ], optional: [ 'itemId' ] })",
+        "properties": {
+          "quantity": {
+            "type": "number"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<InvoiceDetail, 'id'>, 'itemId'>"
+      },
+      "NewItem": {
+        "title": "NewItem",
+        "type": "object",
+        "description": "(tsType: Omit<Item, 'id'>, schemaOptions: { title: 'NewItem', exclude: [ 'id' ] })",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "description"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Item, 'id'>"
+      },
+      "ItemPartial": {
+        "title": "ItemPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Item>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Item>"
+      },
+      "User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "additionalProperties": true
+      },
+      "NewUser": {
+        "title": "NewUser",
+        "type": "object",
+        "description": "(tsType: NewUserRequest, schemaOptions: { title: 'NewUser' })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "NewUserRequest"
+      },
+      "NewUserRequest": {
+        "title": "NewUserRequest",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "InvoiceDetail.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "InvoiceDetail.ScopeFilter"
+      },
+      "InvoiceDetail.IncludeFilter.Items": {
+        "title": "InvoiceDetail.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/InvoiceDetail.ScopeFilter"
+          }
+        }
+      },
+      "InvoiceDetail.Filter": {
+        "type": "object",
+        "title": "InvoiceDetail.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "quantity": {
+                    "type": "boolean"
+                  },
+                  "invoiceId": {
+                    "type": "boolean"
+                  },
+                  "itemId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "quantity",
+                    "invoiceId",
+                    "itemId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "InvoiceDetail.Fields"
+          },
+          "include": {
+            "title": "InvoiceDetail.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/InvoiceDetail.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<InvoiceDetail>"
+      },
+      "InvoiceDetail.Filter1": {
+        "type": "object",
+        "title": "InvoiceDetail.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "InvoiceDetail.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "quantity": {
+                    "type": "boolean"
+                  },
+                  "invoiceId": {
+                    "type": "boolean"
+                  },
+                  "itemId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "quantity",
+                    "invoiceId",
+                    "itemId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "InvoiceDetail.Fields"
+          },
+          "include": {
+            "title": "InvoiceDetail.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/InvoiceDetail.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<InvoiceDetail>"
+      },
+      "Invoice.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Invoice.ScopeFilter"
+      },
+      "Invoice.IncludeFilter.Items": {
+        "title": "Invoice.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Invoice.ScopeFilter"
+          }
+        }
+      },
+      "Invoice.Filter": {
+        "type": "object",
+        "title": "Invoice.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "correlative": {
+                    "type": "boolean"
+                  },
+                  "scheduled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "phone": {
+                    "type": "boolean"
+                  },
+                  "email": {
+                    "type": "boolean"
+                  },
+                  "special": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "correlative",
+                    "scheduled",
+                    "name",
+                    "address",
+                    "phone",
+                    "email",
+                    "special"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Invoice.Fields"
+          },
+          "include": {
+            "title": "Invoice.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Invoice.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Invoice>"
+      },
+      "Invoice.Filter1": {
+        "type": "object",
+        "title": "Invoice.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Invoice.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "correlative": {
+                    "type": "boolean"
+                  },
+                  "scheduled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "phone": {
+                    "type": "boolean"
+                  },
+                  "email": {
+                    "type": "boolean"
+                  },
+                  "special": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "correlative",
+                    "scheduled",
+                    "name",
+                    "address",
+                    "phone",
+                    "email",
+                    "special"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Invoice.Fields"
+          },
+          "include": {
+            "title": "Invoice.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Invoice.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Invoice>"
+      },
+      "Item.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Item.ScopeFilter"
+      },
+      "Item.IncludeFilter.Items": {
+        "title": "Item.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Item.ScopeFilter"
+          }
+        }
+      },
+      "Item.Filter": {
+        "type": "object",
+        "title": "Item.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "description",
+                    "value"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Item.Fields"
+          },
+          "include": {
+            "title": "Item.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Item.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Item>"
+      },
+      "Item.Filter1": {
+        "type": "object",
+        "title": "Item.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Item.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "description",
+                    "value"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Item.Fields"
+          },
+          "include": {
+            "title": "Item.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Item.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Item>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ]
+}

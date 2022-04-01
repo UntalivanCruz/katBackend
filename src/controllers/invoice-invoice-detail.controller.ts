@@ -1,9 +1,11 @@
+// ---------- ADD IMPORTS -------------
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,14 +15,15 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
   Invoice,
-  InvoiceDetail,
+  InvoiceDetail
 } from '../models';
 import {InvoiceRepository} from '../repositories';
-
+// ------------------------------------
+@authenticate('jwt')
 export class InvoiceInvoiceDetailController {
   constructor(
     @repository(InvoiceRepository) protected invoiceRepository: InvoiceRepository,

@@ -1,30 +1,27 @@
+// ---------- ADD IMPORTS -------------
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {InvoiceDetail} from '../models';
 import {InvoiceDetailRepository} from '../repositories';
-
+// ------------------------------------
+@authenticate('jwt')
 export class InvoiceDetailController {
   constructor(
     @repository(InvoiceDetailRepository)
-    public invoiceDetailRepository : InvoiceDetailRepository,
-  ) {}
+    public invoiceDetailRepository: InvoiceDetailRepository,
+  ) { }
 
   @post('/invoice-details')
   @response(200, {
